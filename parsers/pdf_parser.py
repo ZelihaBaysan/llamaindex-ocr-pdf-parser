@@ -1,9 +1,9 @@
 import os
 import nest_asyncio
 from llama_parse import LlamaParse
-from llama_index import GPTVectorStoreIndex
+from llama_index.core import VectorStoreIndex
 
-from llama_index.node_parser import MarkdownNodeParser
+from llama_index.core.node_parser import MarkdownNodeParser
 from config import LLAMA_CLOUD_API_KEY, OCR_LANGUAGE
 
 nest_asyncio.apply()

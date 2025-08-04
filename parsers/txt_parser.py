@@ -1,5 +1,5 @@
-from llama_index import GPTVectorStoreIndex
-from llama_index import download_loader
+from llama_index.core import VectorStoreIndex
+from llama_index.core import download_loader
 from config import OPENAI_API_KEY
 import os
 
