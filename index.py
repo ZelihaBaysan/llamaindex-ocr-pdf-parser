@@ -50,28 +50,12 @@ if __name__ == "__main__":
 
     try:
         # 1. Adım: Tüm dokümanları yükle
-        print("\n[1/4] Dokümanlar yükleniyor...")
+        print("\n[1/3] Dokümanlar yükleniyor...")
         documents = embedder.get_documents("llama_parsed_collection")
         debug_print_docs(documents, "[YÜKLENEN]")
 
-        # 2. Adım: Filtreleme kurallarını uygula
-        print("\n[2/4] Dokümanlar filtreleniyor...")
-        documents = embedder.apply_rules(
-            documents,
-            inclusion_rules=[
-                r'\.(pdf|docx|pptx|html|txt)$',
-            ],
-            exclusion_rules=[
-                r'(^|/)temp/',
-                r'(^|/)drafts/',
-                r'\/_',
-                r'\.(png|jpg|jpeg)$'
-            ]
-        )
-        debug_print_docs(documents, "[FİLTRELENEN]")
-
-        # 3. Adım: İşleme pipeline'ını oluştur
-        print("\n[3/4] İşleme pipeline'ı hazırlanıyor...")
+        # 2. Adım: İşleme pipeline'ını oluştur
+        print("\n[2/3] İşleme pipeline'ı hazırlanıyor...")
         node_parser = MarkdownNodeParser()
         
         pipeline = IngestionPipeline(
@@ -82,8 +66,8 @@ if __name__ == "__main__":
             vector_store=vector_store,
         )
 
-        # 4. Adım: Dokümanları işle ve indeksle
-        print("\n[4/4] Dokümanlar işleniyor ve indeksleniyor...")
+        # 3. Adım: Dokümanları işle ve indeksle
+        print("\n[3/3] Dokümanlar işleniyor ve indeksleniyor...")
         pipeline.run(
             documents=documents,
             show_progress=True,

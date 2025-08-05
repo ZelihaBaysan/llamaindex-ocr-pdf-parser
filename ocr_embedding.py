@@ -37,24 +37,7 @@ class DocumentEmbeddingMethod:
                 print(f"Geçersiz regex deseni: {pattern}")
         return compiled
 
-    def apply_rules(
-        self,
-        documents: Sequence[Document],
-        inclusion_rules: List[str],
-        exclusion_rules: List[str],
-    ) -> Sequence[Document]:
-        default_exclusions = [
-            r'(^|/)\.DS_Store$',
-            r'(^|/)\.git/',
-            r'Thumbs\.db$',
-            r'~\$.*',
-        ]
-
-        compiled_exclude = self._compile_patterns(default_exclusions + exclusion_rules)
-        compiled_include = self._compile_patterns(inclusion_rules)
-
-        filtered_docs = []
-        print(f"\n[apply_rules] İşlenecek doküman sayısı: {len(documents)}")
+    def apply_rules():
 
         for doc in documents:
             file_path = doc.metadata.get("file_path", "")
